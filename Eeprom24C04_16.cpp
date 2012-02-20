@@ -136,7 +136,7 @@ Eeprom24C04_16::writeBytes
 ){
     // Write first page if not aligned.
     byte notAlignedLength = 0;
-    word pageOffset = address % EEPROM__PAGE_SIZE;
+    byte pageOffset = address % EEPROM__PAGE_SIZE;
     if (pageOffset > 0)
     {
         notAlignedLength = EEPROM__PAGE_SIZE - pageOffset;
@@ -150,8 +150,8 @@ Eeprom24C04_16::writeBytes
         p_data += notAlignedLength;
 
         // Write complete and aligned pages.
-        word pageCount = length / EEPROM__PAGE_SIZE;
-        for (word i = 0; i < pageCount; i++)
+        byte pageCount = length / EEPROM__PAGE_SIZE;
+        for (byte i = 0; i < pageCount; i++)
         {
             writePage(address, EEPROM__PAGE_SIZE, p_data);
             address += EEPROM__PAGE_SIZE;
@@ -251,13 +251,13 @@ Eeprom24C04_16::writePage
     byte bufferCount = length / EEPROM__WR_BUFFER_SIZE;
     for (byte i = 0; i < bufferCount; i++)
     {
-        word offset = i * EEPROM__WR_BUFFER_SIZE;
+        byte offset = i * EEPROM__WR_BUFFER_SIZE;
         writeBuffer(address + offset, EEPROM__WR_BUFFER_SIZE, p_data + offset);
     }
 
     // Write remaining bytes.
     byte remainingBytes = length % EEPROM__WR_BUFFER_SIZE;
-    word offset = length - remainingBytes;
+    byte offset = length - remainingBytes;
     writeBuffer(address + offset, remainingBytes, p_data + offset);
 }
 
@@ -323,4 +323,3 @@ Eeprom24C04_16::readBuffer
         }
     }
 }
-
