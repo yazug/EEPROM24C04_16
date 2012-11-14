@@ -10,7 +10,7 @@
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option) any
  * later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
@@ -120,7 +120,7 @@ Eeprom24C04_16::writeByte
  * word     address,
  * word     length,
  * byte*    p_data)
- * 
+ *
  * \brief Write bytes in EEPROM memory.
  *
  * \param       address Start address.
@@ -169,7 +169,7 @@ Eeprom24C04_16::writeBytes
 
 /**************************************************************************//**
  * \fn byte Eeprom24C04_16::readByte(word address)
- * 
+ *
  * \brief Read a byte in EEPROM memory.
  *
  * \param   address Address.
@@ -287,7 +287,7 @@ Eeprom24C04_16::writeBuffer
         Wire.write(p_data[i]);
     }
     Wire.endTransmission();
-    
+
     // Write cycle time (tWR). See EEPROM memory datasheet for more details.
     delay(10);
 }
